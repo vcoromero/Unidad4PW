@@ -1,7 +1,7 @@
 <?php 
-require('mFormulario.php');
-$obj=  new mFormulario();
-$data=$obj->getDatos(); 
+require_once('mFormulario.php');
+
+$data=mFormulario::getDatos(); 
 
 ?>
 <!DOCTYPE html>
@@ -50,18 +50,17 @@ $data=$obj->getDatos();
                             <td><?php echo($row['municipio']); ?></td>
 
                             <td>
-                            <a class="boton" href="<?php echo "mFormulario?";?>">Eliminar</a>
-                            <a class="boton" href="<?php echo "mFormulario?";?>">Editar</a>
+                            <a class="botonNuevo" href="<?php echo "mFormulario?";?>">Eliminar</a>
+                            <a class="botonNuevo" href="<?php echo "mFormulario?";?>">Editar</a>
                             </td>
                         </tr>
             <?php
 
             endforeach;
-
             ?>
-
         </tbody>
     </table>
+    <a href="formulario.php" class="botonNuevo" name="btnNuevoTutorado">Nuevo</a>
 </div>
 </body>
 </html>

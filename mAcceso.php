@@ -1,5 +1,5 @@
 <?php 
-require('controllers/conexionDB.php');
+require('conexionDB.php');
 
 class mAcceso{
 

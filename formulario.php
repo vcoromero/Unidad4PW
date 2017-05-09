@@ -18,7 +18,7 @@ if(isset($_POST['btnenviar'])){
 	$estado=$_POST['estado'];
 
 
-	$qr=mFormulario::insertFormulario($nombre, $appat, $apmat, $edad, $sexo, $correo, $telefono, $direccion, $numeroDireccion, $municipio, $estado);
+	$data=mFormulario::insertFormulario($nombre, $appat, $apmat, $edad, $sexo, $correo, $telefono, $direccion, $numeroDireccion, $municipio, $estado);
 	
 }
 ?>
@@ -28,7 +28,7 @@ if(isset($_POST['btnenviar'])){
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
-	<title>Formulario usando HTML5 y CSS3</title>
+	<title>Unidad 4 PROG WEB</title>
 </head>
 
 <body>

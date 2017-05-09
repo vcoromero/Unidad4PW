@@ -2,9 +2,8 @@
  
  if(isset($_POST['usuario']) && isset($_POST['contrasena'])){
 
- include 'modules/mAcceso.php';
- $obj=  new mAcceso();
- $data=$obj->validarLogin($_POST['usuario'], $_POST['contrasena']);
+ require_once('mAcceso.php');
+ $data= mAcceso::validarLogin($_POST['usuario'], $_POST['contrasena']);
 }
 ?>
 
@@ -13,7 +12,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="estilo.css">
-	<title>Login sencillo</title>
+	<title>Unidad 4 PROG WEB</title>
 </head>
 <body>
 	<div id="contenedor">

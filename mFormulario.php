@@ -1,5 +1,5 @@
 <?php
-require_once ('controllers/conexionDB.php');
+require_once ('conexionDB.php');
 class mFormulario {
 
 	/*tabla formulario*/
