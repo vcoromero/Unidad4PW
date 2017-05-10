@@ -71,6 +71,7 @@ class mUsuarios
 		$qr->execute();
 		if($qr)
 		{
+			header('location: ?sec=usuarios');
 			return true;
 		}
 		else
@@ -85,16 +86,19 @@ class mUsuarios
         $qr->bindParam(':usuario',$_SESSION['usuario']);
         $qr->bindParam(':contrasena',$contrasenaOld);
 		$qr->execute();
-		if($qr==true)
+		if($qr)
 		{
             if($contrasenaNew1 == $contrasenaNew2)
             {
-                $qr=$cn->prepare('UPDATE usuario set contrasena=:contrasena');
-                $qr->bindParam(':contrasena',$contrasenaNew1);
-		        $qr->execute();
-                if($qr)
+				$cn2 = new conexionDB();
+                $qr2=$cn2->prepare('UPDATE usuario SET contrasena=:contrasena WHERE idUsuario=:id');
+				$qr2->bindParam(':id', $_SESSION['idUsuario']);
+                $qr2->bindParam(':contrasena',$contrasenaNew1);
+		        $qr2->execute();
+                if($qr2)
                 {
-    			return true;
+					include('salir.php');
+    				return true;
                 }
             }
 		}

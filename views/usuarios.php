@@ -4,9 +4,9 @@ require_once('modules/mUsuarios.php');
 
 $obj= new mUsuarios();
 $data=$obj->getUsuariosActivos();
-if(isset($_GET['id']))
+if(isset($row['idUsuario']))
 {
-    $obj->inhabilitarUsuario($_GET['id']);
+    $obj->inhabilitarUsuario($row['idUsuario']);
 }
 ?>
 
@@ -27,7 +27,9 @@ if(isset($_GET['id']))
                 <td><?php echo ($row['usuario'])?></td>
                 <td><?php echo (md5($row['contrasena']))?></td>
                 <td>
-                <a type="button" class="btn btn-warning" href='?sec=usuarios&id=<?php echo $row['idUsuario'] ?>'>Inhabilitar</a>
+                <a type="button" class="btn btn-danger" href='?sec=usuarios&id=<?php echo $row['idUsuario'] ?>'>Inhabilitar</a>
+                <a type="button" class="btn btn-warning" href="?sec=formEditarUsuario">Editar</a>
+                
                 </td>
             </tr>
              <?php endforeach; ?>
@@ -35,6 +37,8 @@ if(isset($_GET['id']))
     </table>
     
     <a type="button" class="btn btn-lg btn-success" href='?sec=formNuevoUsuario'>Nuevo</a>
+    
+    
     
 </div>
 

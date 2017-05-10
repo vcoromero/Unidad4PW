@@ -79,24 +79,26 @@ if(isset($_POST['btnenviar']))
     </div>
     <div class="form-group">
         <label for="">Municipio</label>
-        <input type="text" class="form-control" name="direccion" placeholder="Municipios" list="listaMunicipios">
+        <input type="text" class="form-control" name="municipio" placeholder="Municipios" list="listaMunicipios">
         <datalist id="listaMunicipios">
 					<option>Balancán</option>
 					<option>Cárdenas</option>
 					<option>Centla</option>
 					<option>Centro</option>
+                    <option>Jalpa de Mendez</option>
+                    <option>Tacotalpa</option>
 		</datalist>
     </div>
     <div class="form-group">
         <label for="">Estados</label>
-        <input type="text" class="form-control" name="direccion" placeholder="Municipios" list="listaEstados">
+        <input type="text" class="form-control" name="estado" placeholder="Estado" list="listaEstados">
         <datalist id="listaEstados">
 					<option>Tabasco</option>
 					<option>Baja California</option>
 					<option>Baja California Sur</option>
 		</datalist>
     </div>
-    <button type="submit" class="btn btn-primary">Agregar</button>
+    <button type="submit" class="btn btn-primary" name="btnenviar">Agregar</button>
     <button type="reset" class="btn btn-primary">Limpiar</button>
 </form>
 

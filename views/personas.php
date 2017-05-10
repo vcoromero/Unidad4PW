@@ -25,7 +25,8 @@ if(isset($_GET['id']))
                 <td><?php echo ($row['idpersona'])?></td>
                 <td><?php echo ($row['nombre'].' '.$row['appaterno'].' '.$row['apmaterno'])?></td>
                 <td>
-                <a type="button" class="btn btn-warning" href='?sec=personas&id=<?php echo $row['idpersona'] ?>'>Inhabilitar</a>
+                <a type="button" class="btn btn-danger" href='?sec=personas&id=<?php echo $row['idpersona'] ?>'>Inhabilitar</a>
+                <a type="button" class="btn btn-warning" href="?sec=formEditarPersona&id=<?php echo $row['idpersona'] ?>">Editar</a>
                 </td>
             </tr>
              <?php endforeach; ?>

@@ -79,6 +79,7 @@ class mPersonas
 		$qr->execute();
 		if($qr)
 		{
+			header('location: ?sec=personas');
 			return true;
 		}
 		else
@@ -87,24 +88,24 @@ class mPersonas
 		}
 
     }
-    public function updatePersona($id, $pnombre, $pappaterno, $papmaterno, $pedad, $psexo, $pcorreo, $ptelefono, $pdireccion, $pnumDireccion, $pmunicipio, $pestado)
+    public function updatePersona($id, $nombre, $appaterno, $apmaterno, $edad, $sexo, $correo, $telefono, $direccion, $numDireccion, $municipio, $estado)
 	{
 
-		$cn = new conexionBD();
+		$cn = new conexionDB();
 		$qr = $cn->prepare('UPDATE persona set nombre=:nombre, appaterno=:appaterno, apmaterno=:apmaterno, edad=:edad, sexo=:sexo, correo=:correo, telefono=:telefono, 
                             direccion=:direccion, numDireccion=:numDireccion, municipio=:municipio, estado=:estado where idpersona=:id');
 		$qr->bindParam(':id', $id);
-		$qr->bindParam(':nombre', $pnombre);
-		$qr->bindParam(':appaterno', $pappaterno);
-		$qr->bindParam(':apmaterno', $papmaterno);
-		$qr->bindParam(':edad', $pedad);
-		$qr->bindParam(':sexo', $psexo);
-		$qr->bindParam(':correo', $pcorreo);
-		$qr->bindParam(':telefono', $ptelefono);
-		$qr->bindParam(':direccion', $pdireccion);
-		$qr->bindParam(':numDireccion', $pnumDireccion);
-		$qr->bindParam(':municipio', $pmunicipio);
-		$qr->bindParam(':estado', $pestado);
+		$qr->bindParam(':nombre', $nombre);
+		$qr->bindParam(':appaterno', $appaterno);
+		$qr->bindParam(':apmaterno', $apmaterno);
+		$qr->bindParam(':edad', $edad);
+		$qr->bindParam(':sexo', $sexo);
+		$qr->bindParam(':correo', $correo);
+		$qr->bindParam(':telefono', $telefono);
+		$qr->bindParam(':direccion', $direccion);
+		$qr->bindParam(':numDireccion', $numDireccion);
+		$qr->bindParam(':municipio', $municipio);
+		$qr->bindParam(':estado', $estado);
 		$qr->execute();
 
 		if($qr)
