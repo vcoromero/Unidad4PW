@@ -1,28 +1,33 @@
- <?php
- 
- if(isset($_POST['usuario']) && isset($_POST['contrasena'])){
+<?php
 
- require_once('mAcceso.php');
- $obj=new mAcceso();
- $data= $obj->validarLogin($_POST['usuario'], $_POST['contrasena']);
-}
+    if(isset($_POST['usuario']) && isset($_POST['contrasena']))
+    {
+
+        include ('modules/mAcceso.php');
+        $obj= new mAcceso();
+        $data=$obj->validarLogin($_POST['usuario'], $_POST['contrasena']);
+
+    }
+
 ?>
-
-<!DOCTYPE html>
-<html >
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="estilo.css">
-	<title>Unidad 4 PROG WEB</title>
-</head>
+<?php include('templates/head.php'); ?>
 <body>
-	<div id="contenedor">
-		<form method="POST">
-			<h2>Inicie sesión</h2>
-			<input type=text name='usuario' placeholder="Ingrese usuario" class="campo"> 
-			<input type=password name='contrasena' placeholder="Ingrese contraseña" class="campo"> 
-			<button class="boton" name="btnenviar">INGRESAR</button>
-		</form> 
-	</div>
+    <div class="container">
+    
+    <form action="" method="POST" role="form">
+        <legend>Ingrese</legend>
+    
+        <div class="form-group">
+            <label for="">Usuario</label>
+            <input type="text" class="form-control" name="usuario" placeholder="Ingresa tu usuario">
+            <label for="">Contrasena</label>
+            <input type="password" class="form-control" name="contrasena" placeholder="Ingresa tu contraseña">
+        </div>
+    
+        
+    
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+    </div>
 </body>
-</html>
+<?php include('templates/footer.php'); ?>
