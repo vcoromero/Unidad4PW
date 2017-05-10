@@ -3,7 +3,8 @@
  if(isset($_POST['usuario']) && isset($_POST['contrasena'])){
 
  require_once('mAcceso.php');
- $data= mAcceso::validarLogin($_POST['usuario'], $_POST['contrasena']);
+ $obj=new mAcceso();
+ $data= $obj->validarLogin($_POST['usuario'], $_POST['contrasena']);
 }
 ?>
 

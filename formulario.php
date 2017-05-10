@@ -1,4 +1,5 @@
 <?php
+include('auth.php');
 
 require_once ('mFormulario.php');
 
@@ -18,7 +19,7 @@ if(isset($_POST['btnenviar'])){
 	$estado=$_POST['estado'];
 
 
-	$data=mFormulario::insertFormulario($nombre, $appat, $apmat, $edad, $sexo, $correo, $telefono, $direccion, $numeroDireccion, $municipio, $estado);
+	$data=mFormulario::insertPersona($nombre, $appat, $apmat, $edad, $sexo, $correo, $telefono, $direccion, $numeroDireccion, $municipio, $estado);
 	
 }
 ?>
@@ -32,6 +33,8 @@ if(isset($_POST['btnenviar'])){
 </head>
 
 <body>
+<p>Bienvenido <strong><?php echo $_SESSION['usuario']?></strong></p>
+<a href="salir.php">Cerrar sesion</a>
 	<div id="contenedor">
 		<form method="POST" oninput="range_edad_valor.value = edad.valueAsNumber">
 			<!--Input del nombre-->
@@ -64,6 +67,7 @@ if(isset($_POST['btnenviar'])){
 					<option>Balancán</option>
 					<option>Cárdenas</option>
 					<option>Centla</option>
+					<option>Centro</option>
 				</datalist>
 				<input type="text" name="estado" placeholder="Estado" list="listaEstados" >
 				<datalist id="listaEstados">

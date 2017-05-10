@@ -1,7 +1,11 @@
 <?php 
 require_once('mFormulario.php');
 
-$data=mFormulario::getDatos(); 
+$data=mFormulario::getPersonas(); 
+if(isset($_GET['id']))
+{
+    $data=mFormulario::inhabilitarPersona($_GET['id']);
+}
 
 ?>
 <!DOCTYPE html>
@@ -17,41 +21,19 @@ $data=mFormulario::getDatos();
             <tr>
                 <th>ID</th>
                 <th>NOMBRE</th>
-                <th>APELLIDO PATERNO</th>
-                <th>APELLIDO MATERNO</th>
-                <th>EDAD</th>
-                <th>SEXO</th>
-                <th>CORREO</th>
-                <th>TELÉFONO</th>
-                <th>DIRECCION</th>
-                <th># DIRECCIÓN</th>
-                <th>ESTADO</th>
-                <th>MUNICIPIO</th>
                 <th>OPCIONES</th>
             </tr>
         </thead>
         <tbody>
-
-
             <?php foreach($data as $row): ?>
                 
                         <tr>
-                            <td><?php echo($row['id']); ?></td>
-                            <td><?php echo($row['nombre']); ?></td>
-                            <td><?php echo($row['appaterno']); ?></td>
-                            <td><?php echo($row['apmaterno']); ?></td>
-                            <td><?php echo($row['edad']); ?></td>
-                            <td><?php echo($row['sexo']); ?></td>
-                            <td><?php echo($row['correo']); ?></td>
-                            <td><?php echo($row['telefono']); ?></td>
-                            <td><?php echo($row['direccion']); ?></td>
-                            <td><?php echo($row['numDireccion']); ?></td>
-                            <td><?php echo($row['estado']); ?></td>
-                            <td><?php echo($row['municipio']); ?></td>
-
+                            <td><?php echo($row['idpersonas']); ?></td>
+                            <td><a href="misdatos.php"><?php echo($row['nombre'])." ".$row['appaterno']." ".$row['apmaterno']?></a></td>
                             <td>
-                            <a class="botonNuevo" href="<?php echo "mFormulario?";?>">Eliminar</a>
-                            <a class="botonNuevo" href="<?php echo "mFormulario?";?>">Editar</a>
+                            <a class="botonNuevo" href="?sec=persona&id=<?php echo $row['idpersonas'] ?>">Inhabilitar</a>
+                            <!--<a class="botonNuevo" href="formularioEditar.php">Editar</a>-->
+                            <a class="botonNuevo" href="formularioEditar.php?id=<?php echo $row['idpersonas'] ?>">Editar</a>
                             </td>
                         </tr>
             <?php
