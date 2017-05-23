@@ -4,6 +4,7 @@ require_once('modules/mPersonas.php');
 
 $obj= new mPersonas();
 $data=$obj->getPersonasActivos();
+$n=1;
 if(isset($_GET['id']))
 {
     $obj->inhabilitarPersona($_GET['id']);
@@ -14,7 +15,7 @@ if(isset($_GET['id']))
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>NOMBRE</th>
                 <th>ACCIONES</th>
             </tr>
@@ -22,8 +23,8 @@ if(isset($_GET['id']))
         <tbody>
             <?php foreach($data as $row): ?>
             <tr>
-                <td><?php echo ($row['idpersona'])?></td>
-                <td><?php echo ($row['nombre'].' '.$row['appaterno'].' '.$row['apmaterno'])?></td>
+                <td><?php echo $n++; ?></td>
+                <td><a href="?sec=misDatosPersonas&id=<?php echo $row['idpersona'] ?>"><?php echo ($row['nombre'].' '.$row['appaterno'].' '.$row['apmaterno'])?></a></td>
                 <td>
                 <a type="button" class="btn btn-danger" href='?sec=personas&id=<?php echo $row['idpersona'] ?>'>Inhabilitar</a>
                 <a type="button" class="btn btn-warning" href="?sec=formEditarPersona&id=<?php echo $row['idpersona'] ?>">Editar</a>
@@ -33,7 +34,7 @@ if(isset($_GET['id']))
         </tbody>
     </table>
     
-    <a type="button" class="btn btn-lg btn-success" href='?sec=formNuevaPersona'>Nuevo</a>
+    <a type="button" class="btn btn-lg btn-block btn-success" href='?sec=formNuevaPersona'>Nuevo</a>
     
 </div>
 

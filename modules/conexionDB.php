@@ -11,7 +11,8 @@ class conexionDB extends PDO
     {
         try
         {
-            parent::__construct('mysql:host='.$this->db_host.';dbname='.$this->db_database, $this->db_user, $this->db_pass ,array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
+            parent::__construct('mysql:host='.$this->db_host.';dbname='.$this->db_database, $this->db_user, $this->db_pass ,
+			array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'')); 
 		}
 		catch(PDOException $e)
         {

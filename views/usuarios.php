@@ -4,9 +4,10 @@ require_once('modules/mUsuarios.php');
 
 $obj= new mUsuarios();
 $data=$obj->getUsuariosActivos();
-if(isset($row['idUsuario']))
+$n=1;
+if(isset($_GET['id']))
 {
-    $obj->inhabilitarUsuario($row['idUsuario']);
+    $obj->inhabilitarUsuario($_GET['id']);
 }
 ?>
 
@@ -14,21 +15,19 @@ if(isset($row['idUsuario']))
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>USUARIO</th>
-                <th>CONTRASEÑA</th>
+                <th>#</th>
+                <th>USUARIO</th>                
                 <th>ACCIONES</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach($data as $row): ?>
             <tr>
-                <td><?php echo ($row['idUsuario'])?></td>
-                <td><?php echo ($row['usuario'])?></td>
-                <td><?php echo (md5($row['contrasena']))?></td>
+                <td><?php echo $n++; ?></td>
+                <td><a href="?sec=misDatosUsuarios&id=<?php echo $row['idUsuario'] ?>"><?php echo ($row['usuario'])?></a></td>
                 <td>
                 <a type="button" class="btn btn-danger" href='?sec=usuarios&id=<?php echo $row['idUsuario'] ?>'>Inhabilitar</a>
-                <a type="button" class="btn btn-warning" href="?sec=formEditarUsuario">Editar</a>
+                <a type="button" class="btn btn-warning" href="?sec=formEditarUsuario&id=<?php echo $row['idUsuario'] ?>">Editar</a>
                 
                 </td>
             </tr>
@@ -36,7 +35,7 @@ if(isset($row['idUsuario']))
         </tbody>
     </table>
     
-    <a type="button" class="btn btn-lg btn-success" href='?sec=formNuevoUsuario'>Nuevo</a>
+    <a type="button" class="btn btn-lg btn-block btn-success" href='?sec=formNuevoUsuario'>Nuevo</a>
     
     
     
